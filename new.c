@@ -1,13 +1,16 @@
 #include <stdio.h>
+#include "reg51.h"
 #define OPERATION_MODE 1
 
 /* Preprocessor Directives */
 
-int startMode_1(void){
+int startMode_1(void)
+{
     return 0;
 }
 
-int startMode_2(void){
+int startMode_2(void)
+{
     return 0;
 }
 
@@ -17,29 +20,28 @@ int startMode_2(void){
 //         startMode_1();
 //     #elif(OPERATION_MODE == 2)
 //         startMode_2();
-    
+
 //     #else
 //     /* Display error message and stop process */
-//     #error OPERATION_MODE must be 0 or 1 
+//     #error OPERATION_MODE must be 0 or 1
 
 //     #endif
-    
+
 //     return 0;
 // }
-
 
 /* Code Compilation Process */
 
 #define IN_DEBUG_MODE 0
 // for gcc compiler:
-#pragma optimize("",off)
+#pragma optimize("", off)
 
 // for ghs compiler:
-#pragma ghs section ".bss"=".mySection"
+#pragma ghs section ".bss" = ".mySection"
 int myArray[1000]; // it will put this array in section called ".mySection" in memory
 #pragma ghs section
 
-#define MAX(a,b) ((a)>(b))?(a):(b)
+#define MAX(a, b) ((a) > (b)) ? (a) : (b)
 
 // void testFunction(void){
 //     #ifdef IN_DEBUG_MODE
@@ -47,22 +49,33 @@ int myArray[1000]; // it will put this array in section called ".mySection" in m
 //     #endif
 // }
 
-void testFunction(void){
-    #ifdef IN_DEBUG_MODE
-        printf("DEBUG: entered testFunction\n");
-    #endif
+void testFunction(void)
+{
+#ifdef IN_DEBUG_MODE
+    printf("DEBUG: entered testFunction\n");
+#endif
 
-    #undef IN_DEBUG_MODE
+#undef IN_DEBUG_MODE
 
-    #ifdef IN_DEBUG_MODE
-        printf("DEBUG: still in debug mode\n");
-    #endif
-
+#ifdef IN_DEBUG_MODE
+    printf("DEBUG: still in debug mode\n");
+#endif
 }
 
-signed main(int argc, char **argv){
+#define OUTPUT 1
+#define LOGIC_HIGH 1
+
+#define LED_INIT(PORT, PIN)      \
+    portInit(PORT, PIN, OUTPUT); \
+    portState(PORT, PIN, LOGIC_HIGH);
+
+signed main(int argc, char **argv)
+{
     testFunction();
 
-    printf("max value is: %d\n\n",MAX(5,10));
+    printf("max value is: %d\n\n", MAX(5, 10));
+
+    LED_INIT('A', 3); // this expands to portInit + portState
+
     return 0;
 }

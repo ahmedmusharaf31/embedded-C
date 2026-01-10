@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "reg51.h"
+#define int long long
 #define OPERATION_MODE 1
 
 /* Preprocessor Directives */
@@ -69,13 +70,24 @@ void testFunction(void)
     portInit(PORT, PIN, OUTPUT); \
     portState(PORT, PIN, LOGIC_HIGH);
 
+#define square(a) a*a
+
 signed main(int argc, char **argv)
 {
     testFunction();
 
-    printf("max value is: %d\n\n", MAX(5, 10));
+    printf("max value is: %d\n", MAX(5, 10));
 
-    LED_INIT('A', 3); // this expands to portInit + portState
+    // LED_INIT('A', 3);
 
+    // why macros are error-prone:
+    printf("%d\n", square(5));
+    printf("%d\n", square(1 + 2)); // expected 9, got 5
+
+    int x = 5;
+    int y = x;
+    printf("post-inc as: %d\n", square(x++));
+
+    printf("wow: %d\n", y++ * y++);
     return 0;
 }

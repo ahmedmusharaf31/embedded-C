@@ -66,11 +66,36 @@ void testFunction(void)
 #define OUTPUT 1
 #define LOGIC_HIGH 1
 
-#define LED_INIT(PORT, PIN)      \
-    portInit(PORT, PIN, OUTPUT); \
+// #define LED_INIT(PORT, PIN)      \
+//     portInit(PORT, PIN, OUTPUT); \
+//     portState(PORT, PIN, LOGIC_HIGH);
+
+#define square(a) a *a
+
+// stringification:
+#define LED_INIT(PORT, PIN)                  \
+    printf("Initializing PORT: '#PORT' \n"); \
+    portInit(PORT, PIN, OUTPUT);             \
     portState(PORT, PIN, LOGIC_HIGH);
 
-#define square(a) a*a
+// concatenation:
+void portInit_implementation1(void)
+{
+    printf("testing 1...\n");
+}
+
+void portInit_implementation2(void)
+{
+    printf("testing 2...\n");
+}
+
+void portInit_implementation3(void)
+{
+    printf("testing 3...\n");
+}
+
+#define PORT_INIT(NUM) \
+    portInit_implementation##NUM()
 
 signed main(int argc, char **argv)
 {
@@ -86,8 +111,14 @@ signed main(int argc, char **argv)
 
     int x = 5;
     int y = x;
-    printf("post-inc as: %d\n", square(x++));
+    printf("post-inc as: %d\n", square(x++)); // expected 26, got 30
 
     printf("wow: %d\n", y++ * y++);
+    printf("x val: %d\n", x);
+    printf("%d\n", MAX("abc", "def")); // undefined behavior
+
+    // LED_INIT('A', 3);
+
+    PORT_INIT(2);
     return 0;
 }

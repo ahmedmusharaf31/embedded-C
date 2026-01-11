@@ -1,470 +1,185 @@
    1              		.file	"main.c"
    2              		.text
    3              	Ltext0:
-   5              		.section .rdata,"dr"
-   6              	LC0:
-   7 0000 6D617869 		.ascii "maximum is %d\12\0"
-   7      6D756D20 
-   7      69732025 
-   7      640A00
-   8 000f 00       		.text
-   9              		.globl	_main
-  11              	_main:
-  12              	LFB14:
-  13              		.file 1 "main.c"
-   1:main.c        **** #include <stdio.h>
-   2:main.c        **** #include <stdlib.h>
-   3:main.c        **** 
-   4:main.c        **** #include "max.h"
-   5:main.c        **** 
-   6:main.c        **** int main()
-   7:main.c        **** {
-  14              		.loc 1 7 0
-  15              		.cfi_startproc
-  16 0000 55       		pushl	%ebp
-  17              		.cfi_def_cfa_offset 8
-  18              		.cfi_offset 5, -8
-  19 0001 89E5     		movl	%esp, %ebp
-  20              		.cfi_def_cfa_register 5
-  21 0003 83E4F0   		andl	$-16, %esp
-  22 0006 83EC10   		subl	$16, %esp
-  23              		.loc 1 7 0
-  24 0009 E8000000 		call	___main
-  24      00
-  25              	LVL0:
-   8:main.c        ****     printf("maximum is %d\n", max(10, 20));
-  26              		.loc 1 8 0
-  27 000e C7442404 		movl	$20, 4(%esp)
-  27      14000000 
-  28 0016 C704240A 		movl	$10, (%esp)
-  28      000000
-  29 001d E8000000 		call	_max
-  29      00
-  30 0022 89442404 		movl	%eax, 4(%esp)
-  31 0026 C7042400 		movl	$LC0, (%esp)
-  31      000000
-  32 002d E8000000 		call	_printf
-  32      00
-   9:main.c        ****     return 0;
-  33              		.loc 1 9 0
-  34 0032 B8000000 		movl	$0, %eax
-  34      00
-  10:main.c        **** }
-  35              		.loc 1 10 0
-  36 0037 C9       		leave
-  37              		.cfi_restore 5
-  38              		.cfi_def_cfa 4, 4
-  39 0038 C3       		ret
-  40              		.cfi_endproc
-  41              	LFE14:
-  42              	Letext0:
-  43              		.file 2 "c:/mingw/include/stdio.h"
-  44              		.file 3 "c:/mingw/include/stdlib.h"
-  45 0039 909090   		.section	.debug_info,"dr"
-  46              	Ldebug_info0:
-  47 0000 37020000 		.long	0x237
-  48 0004 0400     		.word	0x4
-  49 0006 00000000 		.secrel32	Ldebug_abbrev0
-  50 000a 04       		.byte	0x4
-  51 000b 01       		.uleb128 0x1
-  52 000c 474E5520 		.ascii "GNU C11 6.3.0 -mtune=generic -march=i586 -g\0"
-  52      43313120 
-  52      362E332E 
-  52      30202D6D 
-  52      74756E65 
-  53 0038 0C       		.byte	0xc
-  54 0039 6D61696E 		.ascii "main.c\0"
-  54      2E6300
-  55 0040 433A5C55 		.ascii "C:\\Users\\ahmed\\Downloads\\embedded-C\0"
-  55      73657273 
-  55      5C61686D 
-  55      65645C44 
-  55      6F776E6C 
-  56 0064 00000000 		.long	Ltext0
-  57 0068 39000000 		.long	Letext0-Ltext0
-  58 006c 00000000 		.secrel32	Ldebug_line0
-  59 0070 02       		.uleb128 0x2
-  60 0071 04       		.byte	0x4
-  61 0072 07       		.byte	0x7
-  62 0073 756E7369 		.ascii "unsigned int\0"
-  62      676E6564 
-  62      20696E74 
-  62      00
-  63 0080 02       		.uleb128 0x2
-  64 0081 02       		.byte	0x2
-  65 0082 07       		.byte	0x7
-  66 0083 73686F72 		.ascii "short unsigned int\0"
-  66      7420756E 
-  66      7369676E 
-  66      65642069 
-  66      6E7400
-  67 0096 02       		.uleb128 0x2
-  68 0097 04       		.byte	0x4
-  69 0098 05       		.byte	0x5
-  70 0099 6C6F6E67 		.ascii "long int\0"
-  70      20696E74 
-  70      00
-  71 00a2 02       		.uleb128 0x2
-  72 00a3 08       		.byte	0x8
-  73 00a4 05       		.byte	0x5
-  74 00a5 6C6F6E67 		.ascii "long long int\0"
-  74      206C6F6E 
-  74      6720696E 
-  74      7400
-  75 00b3 02       		.uleb128 0x2
-  76 00b4 04       		.byte	0x4
-  77 00b5 05       		.byte	0x5
-  78 00b6 696E7400 		.ascii "int\0"
-  79 00ba 02       		.uleb128 0x2
-  80 00bb 01       		.byte	0x1
-  81 00bc 06       		.byte	0x6
-  82 00bd 63686172 		.ascii "char\0"
-  82      00
-  83 00c2 03       		.uleb128 0x3
-  84 00c3 5F696F62 		.ascii "_iobuf\0"
-  84      756600
-  85 00ca 20       		.byte	0x20
-  86 00cb 02       		.byte	0x2
-  87 00cc D2       		.byte	0xd2
-  88 00cd 49010000 		.long	0x149
-  89 00d1 04       		.uleb128 0x4
-  90 00d2 5F707472 		.ascii "_ptr\0"
-  90      00
-  91 00d7 02       		.byte	0x2
-  92 00d8 D4       		.byte	0xd4
-  93 00d9 49010000 		.long	0x149
-  94 00dd 00       		.byte	0
-  95 00de 04       		.uleb128 0x4
-  96 00df 5F636E74 		.ascii "_cnt\0"
-  96      00
-  97 00e4 02       		.byte	0x2
-  98 00e5 D5       		.byte	0xd5
-  99 00e6 B3000000 		.long	0xb3
- 100 00ea 04       		.byte	0x4
- 101 00eb 04       		.uleb128 0x4
- 102 00ec 5F626173 		.ascii "_base\0"
- 102      6500
- 103 00f2 02       		.byte	0x2
- 104 00f3 D6       		.byte	0xd6
- 105 00f4 49010000 		.long	0x149
- 106 00f8 08       		.byte	0x8
- 107 00f9 04       		.uleb128 0x4
- 108 00fa 5F666C61 		.ascii "_flag\0"
- 108      6700
- 109 0100 02       		.byte	0x2
- 110 0101 D7       		.byte	0xd7
- 111 0102 B3000000 		.long	0xb3
- 112 0106 0C       		.byte	0xc
- 113 0107 04       		.uleb128 0x4
- 114 0108 5F66696C 		.ascii "_file\0"
- 114      6500
- 115 010e 02       		.byte	0x2
- 116 010f D8       		.byte	0xd8
- 117 0110 B3000000 		.long	0xb3
- 118 0114 10       		.byte	0x10
- 119 0115 04       		.uleb128 0x4
- 120 0116 5F636861 		.ascii "_charbuf\0"
- 120      72627566 
- 120      00
- 121 011f 02       		.byte	0x2
- 122 0120 D9       		.byte	0xd9
- 123 0121 B3000000 		.long	0xb3
- 124 0125 14       		.byte	0x14
- 125 0126 04       		.uleb128 0x4
- 126 0127 5F627566 		.ascii "_bufsiz\0"
- 126      73697A00 
- 127 012f 02       		.byte	0x2
- 128 0130 DA       		.byte	0xda
- 129 0131 B3000000 		.long	0xb3
- 130 0135 18       		.byte	0x18
- 131 0136 04       		.uleb128 0x4
- 132 0137 5F746D70 		.ascii "_tmpfname\0"
- 132      666E616D 
- 132      6500
- 133 0141 02       		.byte	0x2
- 134 0142 DB       		.byte	0xdb
- 135 0143 49010000 		.long	0x149
- 136 0147 1C       		.byte	0x1c
- 137 0148 00       		.byte	0
- 138 0149 05       		.uleb128 0x5
- 139 014a 04       		.byte	0x4
- 140 014b BA000000 		.long	0xba
- 141 014f 06       		.uleb128 0x6
- 142 0150 46494C45 		.ascii "FILE\0"
- 142      00
- 143 0155 02       		.byte	0x2
- 144 0156 DC       		.byte	0xdc
- 145 0157 C2000000 		.long	0xc2
- 146 015b 07       		.uleb128 0x7
- 147 015c 4F010000 		.long	0x14f
- 148 0160 66010000 		.long	0x166
- 149 0164 08       		.uleb128 0x8
- 150 0165 00       		.byte	0
- 151 0166 09       		.uleb128 0x9
- 152 0167 5F696F62 		.ascii "_iob\0"
- 152      00
- 153 016c 02       		.byte	0x2
- 154 016d EF       		.byte	0xef
- 155 016e 5B010000 		.long	0x15b
- 156 0172 09       		.uleb128 0x9
- 157 0173 5F617267 		.ascii "_argc\0"
- 157      6300
- 158 0179 03       		.byte	0x3
- 159 017a 63       		.byte	0x63
- 160 017b B3000000 		.long	0xb3
- 161 017f 09       		.uleb128 0x9
- 162 0180 5F617267 		.ascii "_argv\0"
- 162      7600
- 163 0186 03       		.byte	0x3
- 164 0187 64       		.byte	0x64
- 165 0188 8C010000 		.long	0x18c
- 166 018c 05       		.uleb128 0x5
- 167 018d 04       		.byte	0x4
- 168 018e 49010000 		.long	0x149
- 169 0192 09       		.uleb128 0x9
- 170 0193 5F5F6D62 		.ascii "__mb_cur_max\0"
- 170      5F637572 
- 170      5F6D6178 
- 170      00
- 171 01a0 03       		.byte	0x3
- 172 01a1 8E       		.byte	0x8e
- 173 01a2 B3000000 		.long	0xb3
- 174 01a6 09       		.uleb128 0x9
- 175 01a7 5F737973 		.ascii "_sys_nerr\0"
- 175      5F6E6572 
- 175      7200
- 176 01b1 03       		.byte	0x3
- 177 01b2 CA       		.byte	0xca
- 178 01b3 B3000000 		.long	0xb3
- 179 01b7 07       		.uleb128 0x7
- 180 01b8 49010000 		.long	0x149
- 181 01bc C2010000 		.long	0x1c2
- 182 01c0 08       		.uleb128 0x8
- 183 01c1 00       		.byte	0
- 184 01c2 09       		.uleb128 0x9
- 185 01c3 5F737973 		.ascii "_sys_errlist\0"
- 185      5F657272 
- 185      6C697374 
- 185      00
- 186 01d0 03       		.byte	0x3
- 187 01d1 E3       		.byte	0xe3
- 188 01d2 B7010000 		.long	0x1b7
- 189 01d6 09       		.uleb128 0x9
- 190 01d7 5F6F7376 		.ascii "_osver\0"
- 190      657200
- 191 01de 03       		.byte	0x3
- 192 01df FA       		.byte	0xfa
- 193 01e0 70000000 		.long	0x70
- 194 01e4 09       		.uleb128 0x9
- 195 01e5 5F77696E 		.ascii "_winver\0"
- 195      76657200 
- 196 01ed 03       		.byte	0x3
- 197 01ee FB       		.byte	0xfb
- 198 01ef 70000000 		.long	0x70
- 199 01f3 09       		.uleb128 0x9
- 200 01f4 5F77696E 		.ascii "_winmajor\0"
- 200      6D616A6F 
- 200      7200
- 201 01fe 03       		.byte	0x3
- 202 01ff FC       		.byte	0xfc
- 203 0200 70000000 		.long	0x70
- 204 0204 09       		.uleb128 0x9
- 205 0205 5F77696E 		.ascii "_winminor\0"
- 205      6D696E6F 
- 205      7200
- 206 020f 03       		.byte	0x3
- 207 0210 FD       		.byte	0xfd
- 208 0211 70000000 		.long	0x70
- 209 0215 0A       		.uleb128 0xa
- 210 0216 5F666D6F 		.ascii "_fmode\0"
- 210      646500
- 211 021d 03       		.byte	0x3
- 212 021e 4501     		.word	0x145
- 213 0220 B3000000 		.long	0xb3
- 214 0224 0B       		.uleb128 0xb
- 215 0225 6D61696E 		.ascii "main\0"
- 215      00
- 216 022a 01       		.byte	0x1
- 217 022b 06       		.byte	0x6
- 218 022c B3000000 		.long	0xb3
- 219 0230 00000000 		.long	LFB14
- 220 0234 39000000 		.long	LFE14-LFB14
- 221 0238 01       		.uleb128 0x1
- 222 0239 9C       		.byte	0x9c
- 223 023a 00       		.byte	0
- 224              		.section	.debug_abbrev,"dr"
- 225              	Ldebug_abbrev0:
- 226 0000 01       		.uleb128 0x1
- 227 0001 11       		.uleb128 0x11
- 228 0002 01       		.byte	0x1
- 229 0003 25       		.uleb128 0x25
- 230 0004 08       		.uleb128 0x8
- 231 0005 13       		.uleb128 0x13
- 232 0006 0B       		.uleb128 0xb
- 233 0007 03       		.uleb128 0x3
- 234 0008 08       		.uleb128 0x8
- 235 0009 1B       		.uleb128 0x1b
- 236 000a 08       		.uleb128 0x8
- 237 000b 11       		.uleb128 0x11
- 238 000c 01       		.uleb128 0x1
- 239 000d 12       		.uleb128 0x12
- 240 000e 06       		.uleb128 0x6
- 241 000f 10       		.uleb128 0x10
- 242 0010 17       		.uleb128 0x17
- 243 0011 00       		.byte	0
- 244 0012 00       		.byte	0
- 245 0013 02       		.uleb128 0x2
- 246 0014 24       		.uleb128 0x24
- 247 0015 00       		.byte	0
- 248 0016 0B       		.uleb128 0xb
- 249 0017 0B       		.uleb128 0xb
- 250 0018 3E       		.uleb128 0x3e
- 251 0019 0B       		.uleb128 0xb
- 252 001a 03       		.uleb128 0x3
- 253 001b 08       		.uleb128 0x8
- 254 001c 00       		.byte	0
- 255 001d 00       		.byte	0
- 256 001e 03       		.uleb128 0x3
- 257 001f 13       		.uleb128 0x13
- 258 0020 01       		.byte	0x1
- 259 0021 03       		.uleb128 0x3
- 260 0022 08       		.uleb128 0x8
- 261 0023 0B       		.uleb128 0xb
- 262 0024 0B       		.uleb128 0xb
- 263 0025 3A       		.uleb128 0x3a
- 264 0026 0B       		.uleb128 0xb
- 265 0027 3B       		.uleb128 0x3b
- 266 0028 0B       		.uleb128 0xb
- 267 0029 01       		.uleb128 0x1
- 268 002a 13       		.uleb128 0x13
- 269 002b 00       		.byte	0
- 270 002c 00       		.byte	0
- 271 002d 04       		.uleb128 0x4
- 272 002e 0D       		.uleb128 0xd
- 273 002f 00       		.byte	0
- 274 0030 03       		.uleb128 0x3
- 275 0031 08       		.uleb128 0x8
- 276 0032 3A       		.uleb128 0x3a
- 277 0033 0B       		.uleb128 0xb
- 278 0034 3B       		.uleb128 0x3b
- 279 0035 0B       		.uleb128 0xb
- 280 0036 49       		.uleb128 0x49
- 281 0037 13       		.uleb128 0x13
- 282 0038 38       		.uleb128 0x38
- 283 0039 0B       		.uleb128 0xb
- 284 003a 00       		.byte	0
- 285 003b 00       		.byte	0
- 286 003c 05       		.uleb128 0x5
- 287 003d 0F       		.uleb128 0xf
- 288 003e 00       		.byte	0
- 289 003f 0B       		.uleb128 0xb
- 290 0040 0B       		.uleb128 0xb
- 291 0041 49       		.uleb128 0x49
- 292 0042 13       		.uleb128 0x13
- 293 0043 00       		.byte	0
- 294 0044 00       		.byte	0
- 295 0045 06       		.uleb128 0x6
- 296 0046 16       		.uleb128 0x16
- 297 0047 00       		.byte	0
- 298 0048 03       		.uleb128 0x3
- 299 0049 08       		.uleb128 0x8
- 300 004a 3A       		.uleb128 0x3a
- 301 004b 0B       		.uleb128 0xb
- 302 004c 3B       		.uleb128 0x3b
- 303 004d 0B       		.uleb128 0xb
- 304 004e 49       		.uleb128 0x49
- 305 004f 13       		.uleb128 0x13
- 306 0050 00       		.byte	0
- 307 0051 00       		.byte	0
- 308 0052 07       		.uleb128 0x7
- 309 0053 01       		.uleb128 0x1
- 310 0054 01       		.byte	0x1
- 311 0055 49       		.uleb128 0x49
- 312 0056 13       		.uleb128 0x13
- 313 0057 01       		.uleb128 0x1
- 314 0058 13       		.uleb128 0x13
- 315 0059 00       		.byte	0
- 316 005a 00       		.byte	0
- 317 005b 08       		.uleb128 0x8
- 318 005c 21       		.uleb128 0x21
- 319 005d 00       		.byte	0
- 320 005e 00       		.byte	0
- 321 005f 00       		.byte	0
- 322 0060 09       		.uleb128 0x9
- 323 0061 34       		.uleb128 0x34
- 324 0062 00       		.byte	0
- 325 0063 03       		.uleb128 0x3
- 326 0064 08       		.uleb128 0x8
- 327 0065 3A       		.uleb128 0x3a
- 328 0066 0B       		.uleb128 0xb
- 329 0067 3B       		.uleb128 0x3b
- 330 0068 0B       		.uleb128 0xb
- 331 0069 49       		.uleb128 0x49
- 332 006a 13       		.uleb128 0x13
- 333 006b 3F       		.uleb128 0x3f
- 334 006c 19       		.uleb128 0x19
- 335 006d 3C       		.uleb128 0x3c
- 336 006e 19       		.uleb128 0x19
- 337 006f 00       		.byte	0
- 338 0070 00       		.byte	0
- 339 0071 0A       		.uleb128 0xa
- 340 0072 34       		.uleb128 0x34
- 341 0073 00       		.byte	0
- 342 0074 03       		.uleb128 0x3
- 343 0075 08       		.uleb128 0x8
- 344 0076 3A       		.uleb128 0x3a
- 345 0077 0B       		.uleb128 0xb
- 346 0078 3B       		.uleb128 0x3b
- 347 0079 05       		.uleb128 0x5
- 348 007a 49       		.uleb128 0x49
- 349 007b 13       		.uleb128 0x13
- 350 007c 3F       		.uleb128 0x3f
- 351 007d 19       		.uleb128 0x19
- 352 007e 3C       		.uleb128 0x3c
- 353 007f 19       		.uleb128 0x19
- 354 0080 00       		.byte	0
- 355 0081 00       		.byte	0
- 356 0082 0B       		.uleb128 0xb
- 357 0083 2E       		.uleb128 0x2e
- 358 0084 00       		.byte	0
- 359 0085 3F       		.uleb128 0x3f
- 360 0086 19       		.uleb128 0x19
- 361 0087 03       		.uleb128 0x3
- 362 0088 08       		.uleb128 0x8
- 363 0089 3A       		.uleb128 0x3a
- 364 008a 0B       		.uleb128 0xb
- 365 008b 3B       		.uleb128 0x3b
- 366 008c 0B       		.uleb128 0xb
- 367 008d 49       		.uleb128 0x49
- 368 008e 13       		.uleb128 0x13
- 369 008f 11       		.uleb128 0x11
- 370 0090 01       		.uleb128 0x1
- 371 0091 12       		.uleb128 0x12
- 372 0092 06       		.uleb128 0x6
- 373 0093 40       		.uleb128 0x40
- 374 0094 18       		.uleb128 0x18
- 375 0095 9642     		.uleb128 0x2116
- 376 0097 19       		.uleb128 0x19
- 377 0098 00       		.byte	0
- 378 0099 00       		.byte	0
- 379 009a 00       		.byte	0
- 380              		.section	.debug_aranges,"dr"
- 381 0000 1C000000 		.long	0x1c
- 382 0004 0200     		.word	0x2
- 383 0006 00000000 		.secrel32	Ldebug_info0
- 384 000a 04       		.byte	0x4
- 385 000b 00       		.byte	0
- 386 000c 0000     		.word	0
- 387 000e 0000     		.word	0
- 388 0010 00000000 		.long	Ltext0
- 389 0014 39000000 		.long	Letext0-Ltext0
- 390 0018 00000000 		.long	0
- 391 001c 00000000 		.long	0
- 392              		.section	.debug_line,"dr"
- 393              	Ldebug_line0:
- 394 0000 5E000000 		.section	.debug_str,"dr"
- 394      02004500 
- 394      00000101 
- 394      FB0E0D00 
- 394      01010101 
- 395              		.ident	"GCC: (MinGW.org GCC-6.3.0-1) 6.3.0"
+   4              		.globl	_max
+   6              	_max:
+   7              	LFB0:
+   8              		.file 1 "max.c"
+   1:max.c         **** int max(int num1, int num2)
+   2:max.c         **** {
+   9              		.loc 1 2 0
+  10              		.cfi_startproc
+  11 0000 55       		pushl	%ebp
+  12              		.cfi_def_cfa_offset 8
+  13              		.cfi_offset 5, -8
+  14 0001 89E5     		movl	%esp, %ebp
+  15              		.cfi_def_cfa_register 5
+   3:max.c         ****     return (num1 > num2) ? num1 : num2;
+  16              		.loc 1 3 0
+  17 0003 8B5508   		movl	8(%ebp), %edx
+  18 0006 8B450C   		movl	12(%ebp), %eax
+  19 0009 39D0     		cmpl	%edx, %eax
+  20 000b 7D02     		jge	L3
+  21 000d 89D0     		movl	%edx, %eax
+  22              	L3:
+   4:max.c         **** }
+  23              		.loc 1 4 0 discriminator 1
+  24 000f 5D       		popl	%ebp
+  25              		.cfi_restore 5
+  26              		.cfi_def_cfa 4, 4
+  27 0010 C3       		ret
+  28              		.cfi_endproc
+  29              	LFE0:
+  30              	Letext0:
+  31 0011 909090   		.section	.debug_info,"dr"
+  32              	Ldebug_info0:
+  33 0000 AB000000 		.long	0xab
+  34 0004 0400     		.word	0x4
+  35 0006 00000000 		.secrel32	Ldebug_abbrev0
+  36 000a 04       		.byte	0x4
+  37 000b 01       		.uleb128 0x1
+  38 000c 474E5520 		.ascii "GNU C11 6.3.0 -mtune=generic -march=i586 -g\0"
+  38      43313120 
+  38      362E332E 
+  38      30202D6D 
+  38      74756E65 
+  39 0038 0C       		.byte	0xc
+  40 0039 6D61782E 		.ascii "max.c\0"
+  40      6300
+  41 003f 433A5C55 		.ascii "C:\\Users\\ahmed\\Downloads\\embedded-C\0"
+  41      73657273 
+  41      5C61686D 
+  41      65645C44 
+  41      6F776E6C 
+  42 0063 00000000 		.long	Ltext0
+  43 0067 11000000 		.long	Letext0-Ltext0
+  44 006b 00000000 		.secrel32	Ldebug_line0
+  45 006f 02       		.uleb128 0x2
+  46 0070 6D617800 		.ascii "max\0"
+  47 0074 01       		.byte	0x1
+  48 0075 01       		.byte	0x1
+  49 0076 A7000000 		.long	0xa7
+  50 007a 00000000 		.long	LFB0
+  51 007e 11000000 		.long	LFE0-LFB0
+  52 0082 01       		.uleb128 0x1
+  53 0083 9C       		.byte	0x9c
+  54 0084 A7000000 		.long	0xa7
+  55 0088 03       		.uleb128 0x3
+  56 0089 6E756D31 		.ascii "num1\0"
+  56      00
+  57 008e 01       		.byte	0x1
+  58 008f 01       		.byte	0x1
+  59 0090 A7000000 		.long	0xa7
+  60 0094 02       		.uleb128 0x2
+  61 0095 91       		.byte	0x91
+  62 0096 00       		.sleb128 0
+  63 0097 03       		.uleb128 0x3
+  64 0098 6E756D32 		.ascii "num2\0"
+  64      00
+  65 009d 01       		.byte	0x1
+  66 009e 01       		.byte	0x1
+  67 009f A7000000 		.long	0xa7
+  68 00a3 02       		.uleb128 0x2
+  69 00a4 91       		.byte	0x91
+  70 00a5 04       		.sleb128 4
+  71 00a6 00       		.byte	0
+  72 00a7 04       		.uleb128 0x4
+  73 00a8 04       		.byte	0x4
+  74 00a9 05       		.byte	0x5
+  75 00aa 696E7400 		.ascii "int\0"
+  76 00ae 00       		.byte	0
+  77              		.section	.debug_abbrev,"dr"
+  78              	Ldebug_abbrev0:
+  79 0000 01       		.uleb128 0x1
+  80 0001 11       		.uleb128 0x11
+  81 0002 01       		.byte	0x1
+  82 0003 25       		.uleb128 0x25
+  83 0004 08       		.uleb128 0x8
+  84 0005 13       		.uleb128 0x13
+  85 0006 0B       		.uleb128 0xb
+  86 0007 03       		.uleb128 0x3
+  87 0008 08       		.uleb128 0x8
+  88 0009 1B       		.uleb128 0x1b
+  89 000a 08       		.uleb128 0x8
+  90 000b 11       		.uleb128 0x11
+  91 000c 01       		.uleb128 0x1
+  92 000d 12       		.uleb128 0x12
+  93 000e 06       		.uleb128 0x6
+  94 000f 10       		.uleb128 0x10
+  95 0010 17       		.uleb128 0x17
+  96 0011 00       		.byte	0
+  97 0012 00       		.byte	0
+  98 0013 02       		.uleb128 0x2
+  99 0014 2E       		.uleb128 0x2e
+ 100 0015 01       		.byte	0x1
+ 101 0016 3F       		.uleb128 0x3f
+ 102 0017 19       		.uleb128 0x19
+ 103 0018 03       		.uleb128 0x3
+ 104 0019 08       		.uleb128 0x8
+ 105 001a 3A       		.uleb128 0x3a
+ 106 001b 0B       		.uleb128 0xb
+ 107 001c 3B       		.uleb128 0x3b
+ 108 001d 0B       		.uleb128 0xb
+ 109 001e 27       		.uleb128 0x27
+ 110 001f 19       		.uleb128 0x19
+ 111 0020 49       		.uleb128 0x49
+ 112 0021 13       		.uleb128 0x13
+ 113 0022 11       		.uleb128 0x11
+ 114 0023 01       		.uleb128 0x1
+ 115 0024 12       		.uleb128 0x12
+ 116 0025 06       		.uleb128 0x6
+ 117 0026 40       		.uleb128 0x40
+ 118 0027 18       		.uleb128 0x18
+ 119 0028 9742     		.uleb128 0x2117
+ 120 002a 19       		.uleb128 0x19
+ 121 002b 01       		.uleb128 0x1
+ 122 002c 13       		.uleb128 0x13
+ 123 002d 00       		.byte	0
+ 124 002e 00       		.byte	0
+ 125 002f 03       		.uleb128 0x3
+ 126 0030 05       		.uleb128 0x5
+ 127 0031 00       		.byte	0
+ 128 0032 03       		.uleb128 0x3
+ 129 0033 08       		.uleb128 0x8
+ 130 0034 3A       		.uleb128 0x3a
+ 131 0035 0B       		.uleb128 0xb
+ 132 0036 3B       		.uleb128 0x3b
+ 133 0037 0B       		.uleb128 0xb
+ 134 0038 49       		.uleb128 0x49
+ 135 0039 13       		.uleb128 0x13
+ 136 003a 02       		.uleb128 0x2
+ 137 003b 18       		.uleb128 0x18
+ 138 003c 00       		.byte	0
+ 139 003d 00       		.byte	0
+ 140 003e 04       		.uleb128 0x4
+ 141 003f 24       		.uleb128 0x24
+ 142 0040 00       		.byte	0
+ 143 0041 0B       		.uleb128 0xb
+ 144 0042 0B       		.uleb128 0xb
+ 145 0043 3E       		.uleb128 0x3e
+ 146 0044 0B       		.uleb128 0xb
+ 147 0045 03       		.uleb128 0x3
+ 148 0046 08       		.uleb128 0x8
+ 149 0047 00       		.byte	0
+ 150 0048 00       		.byte	0
+ 151 0049 00       		.byte	0
+ 152              		.section	.debug_aranges,"dr"
+ 153 0000 1C000000 		.long	0x1c
+ 154 0004 0200     		.word	0x2
+ 155 0006 00000000 		.secrel32	Ldebug_info0
+ 156 000a 04       		.byte	0x4
+ 157 000b 00       		.byte	0
+ 158 000c 0000     		.word	0
+ 159 000e 0000     		.word	0
+ 160 0010 00000000 		.long	Ltext0
+ 161 0014 11000000 		.long	Letext0-Ltext0
+ 162 0018 00000000 		.long	0
+ 163 001c 00000000 		.long	0
+ 164              		.section	.debug_line,"dr"
+ 165              	Ldebug_line0:
+ 166 0000 35000000 		.section	.debug_str,"dr"
+ 166      02001C00 
+ 166      00000101 
+ 166      FB0E0D00 
+ 166      01010101 
+ 167              		.ident	"GCC: (MinGW.org GCC-6.3.0-1) 6.3.0"
